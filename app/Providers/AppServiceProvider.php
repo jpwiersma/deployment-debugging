@@ -2,6 +2,16 @@
 
 namespace App\Providers;
 
+use App\Diagnostics\Checks\CacheCheck;
+use App\Diagnostics\Checks\DatabaseCheck;
+use App\Diagnostics\Checks\DeploymentCheck;
+use App\Diagnostics\Checks\EnvironmentCheck;
+use App\Diagnostics\Checks\FilesystemCheck;
+use App\Diagnostics\Checks\PhpCheck;
+use App\Diagnostics\Checks\QueueCheck;
+use App\Diagnostics\Checks\SchedulerCheck;
+use App\Diagnostics\Checks\WebServerCheck;
+use App\Diagnostics\DiagnosticRunner;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +25,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(DiagnosticRunner::class, function () {
+            return (new DiagnosticRunner)
+                ->register(new EnvironmentCheck)
+                ->register(new PhpCheck)
+                ->register(new DatabaseCheck)
+                ->register(new CacheCheck)
+                ->register(new QueueCheck)
+                ->register(new FilesystemCheck)
+                ->register(new DeploymentCheck)
+                ->register(new WebServerCheck)
+                ->register(new SchedulerCheck);
+        });
     }
 
     /**

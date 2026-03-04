@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DiagnoseController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome')->name('home');
+Route::get('/', DiagnoseController::class)->name('home');
