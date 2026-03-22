@@ -4,7 +4,7 @@
             <div>
                 <h1 class="text-2xl font-bold text-white">Deployment Diagnostics</h1>
                 <p class="mt-1 text-sm text-zinc-500">
-                    Stack health check &mdash; generated {{ now()->format('Y-m-d H:i:s T') }}
+                    Stack health check v2 &mdash; generated {{ now()->format('Y-m-d H:i:s T') }}
                 </p>
             </div>
             <div>
