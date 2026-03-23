@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'variant' => 'main',
-    'description' => 'Baseline — SQLite, database cache/queue, PHP ^8.2',
+    'variant' => 'laravel-php83',
+    'description' => 'PHP 8.3 pinning — tests version constraint resolution',
 ];
