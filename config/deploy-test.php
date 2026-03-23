@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'variant' => 'main',
-    'description' => 'Baseline — SQLite, database cache/queue, PHP ^8.2',
+    'variant' => 'laravel-mysql',
+    'description' => 'MySQL — database service via ext-pdo_mysql + config default',
 ];
