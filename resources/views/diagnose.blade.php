@@ -22,6 +22,8 @@
         </div>
     </div>
 
+    <x-diagnose.variant-header :variant="$variant" />
+
     <div class="grid gap-6">
         @foreach ($results as $name => $checks)
             <x-diagnose.section :title="$name" :results="$checks" />

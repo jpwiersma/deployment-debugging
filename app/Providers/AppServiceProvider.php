@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Diagnostics\Checks\CacheCheck;
+use App\Diagnostics\Checks\ComposerRequirementsCheck;
+use App\Diagnostics\Checks\ConfigSummaryCheck;
 use App\Diagnostics\Checks\DatabaseCheck;
 use App\Diagnostics\Checks\DeploymentCheck;
 use App\Diagnostics\Checks\EnvironmentCheck;
@@ -27,6 +29,8 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(DiagnosticRunner::class, function () {
             return (new DiagnosticRunner)
+                ->register(new ConfigSummaryCheck)
+                ->register(new ComposerRequirementsCheck)
                 ->register(new EnvironmentCheck)
                 ->register(new PhpCheck)
                 ->register(new DatabaseCheck)

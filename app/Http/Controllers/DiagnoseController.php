@@ -11,7 +11,8 @@ class DiagnoseController
     {
         $results = $runner->run();
         $summary = $runner->summary($results);
+        $variant = config('deploy-test');
 
-        return view('diagnose', compact('results', 'summary'));
+        return view('diagnose', compact('results', 'summary', 'variant'));
     }
 }
